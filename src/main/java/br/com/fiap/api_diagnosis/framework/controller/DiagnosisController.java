@@ -39,20 +39,6 @@ public class DiagnosisController {
         return ResponseEntity.status(HttpStatus.CREATED).location(location).body(diagnosisResponseDto);
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<DiagnosisResponseDto>> getDiagnoses(
-//            @RequestParam(defaultValue = "1") Integer pageNumber,
-//            @RequestParam(defaultValue = "10") Integer pageSize,
-//            @RequestParam(defaultValue = "id") String sortBy
-//    ) {
-//        List<Diagnosis> diagnoses = diagnosisPortIn.getDiagnoses(
-//                new ObtainDiagnosesRequestDto(
-//                        pageNumber, pageSize, sortBy)
-//        );
-//        return ResponseEntity.status(HttpStatus.OK).body(
-//                diagnoses.stream().map(DiagnosisDtoDomainMapper::toDiagnosisResponseDto).toList());
-//    }
-
     @GetMapping
     public ResponseEntity<Page<DiagnosisResponseDto>> getDiagnoses(
             @PageableDefault(page = 0, size = 3, sort = "id", direction = Sort.Direction.ASC)
@@ -63,7 +49,7 @@ public class DiagnosisController {
                 diagnoses.map(DiagnosisDtoDomainMapper::toDiagnosisResponseDto));
     }
 
-    @GetMapping("{diagnosisId}")
+    @GetMapping("/{diagnosisId}")
     public ResponseEntity<DiagnosisResponseDto> getDiagnosisById(@PathVariable Long diagnosisId) {
         Diagnosis diagnosis = diagnosisPortIn.getDiagnosisById(diagnosisId);
         return ResponseEntity.status(HttpStatus.OK).body(DiagnosisDtoDomainMapper.toDiagnosisResponseDto(diagnosis));

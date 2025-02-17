@@ -8,8 +8,6 @@ public interface DiagnosisPortIn {
 
     Diagnosis createDiagnosis(Diagnosis diagnosis);
 
-//    List<Diagnosis> getDiagnoses(ObtainDiagnosesRequestDto dto);
-
     Page<Diagnosis> getDiagnoses(Pageable pageable);
 
     Diagnosis getDiagnosisById(Long diagnosisId);

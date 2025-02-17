@@ -10,8 +10,6 @@ public interface DiagnosisPortOut {
 
     Diagnosis createDiagnosis(Diagnosis diagnosis);
 
-//    List<Diagnosis> getDiagnoses(ObtainDiagnosesRequestDto dto);
-
     Page<Diagnosis> getDiagnoses(Pageable pageable);
 
     Optional<Diagnosis> getDiagnosisById(Long diagnosisId);

@@ -31,13 +31,6 @@ public class DiagnosisAdapterImpl implements DiagnosisPortOut {
         return diagnosisRepository.findAll(pageable).map(DiagnosisDomainEntityMapper::toDiagnosis);
     }
 
-//    @Override
-//    public List<Diagnosis> getDiagnoses(ObtainDiagnosesRequestDto dto) {
-//        PageRequest paging = PageRequest.of(dto.getPageNumber(), dto.getPageSize(), Sort.by(dto.getSortBy()));
-//        Page<DiagnosisEntity> entities = diagnosisRepository.findAll(paging);
-//        return entities.stream().map(DiagnosisDomainEntityMapper::toDiagnosis).toList();
-//    }
-
     @Override
     public Optional<Diagnosis> getDiagnosisById(Long diagnosisId) {
         return diagnosisRepository.findById(diagnosisId).map(DiagnosisDomainEntityMapper::toDiagnosis);

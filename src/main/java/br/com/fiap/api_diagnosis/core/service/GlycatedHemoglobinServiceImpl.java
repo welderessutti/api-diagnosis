@@ -35,5 +35,5 @@ public class GlycatedHemoglobinServiceImpl implements GlycatedHemoglobinPortIn {
 }
 
 //Normal: Less than 5,7%
-//Pré-diabetes: Between 5,7% and 6,4%
+//Pre-diabetes: Between 5,7% and 6,4%
 //Diabetes: 6,5% or over
