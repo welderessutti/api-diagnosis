@@ -72,9 +72,9 @@ public class DiagnosisServiceImpl implements DiagnosisPortIn {
 
     private void sendDiagnosisCreatedEvent(Diagnosis createdDiagnosis) {
         if (createdDiagnosis.getGlycatedHemoglobinTestStatus().equals(TestStatus.CRITICAL)) {
-            diagnosisCreatedEventSupplierPortOut.sendAppointmentScheduleDiagnosisCreatedEvent(createdDiagnosis);
+            diagnosisCreatedEventSupplierPortOut.sendAppointmentSchedulingDiagnosisCreatedEvent(createdDiagnosis);
         } else {
-            diagnosisCreatedEventSupplierPortOut.sendTestScheduleDiagnosisCreatedEvent(createdDiagnosis);
+            diagnosisCreatedEventSupplierPortOut.sendTestSchedulingDiagnosisCreatedEvent(createdDiagnosis);
         }
     }
 }

@@ -4,7 +4,7 @@ import br.com.fiap.api_diagnosis.core.domain.Diagnosis;
 
 public interface DiagnosisCreatedEventSupplierPortOut {
 
-    void sendTestScheduleDiagnosisCreatedEvent(Diagnosis diagnosis);
+    void sendTestSchedulingDiagnosisCreatedEvent(Diagnosis diagnosis);
 
-    void sendAppointmentScheduleDiagnosisCreatedEvent(Diagnosis diagnosis);
+    void sendAppointmentSchedulingDiagnosisCreatedEvent(Diagnosis diagnosis);
 }
