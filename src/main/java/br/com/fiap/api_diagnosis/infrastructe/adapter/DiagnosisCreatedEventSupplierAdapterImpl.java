@@ -18,7 +18,7 @@ public class DiagnosisCreatedEventSupplierAdapterImpl implements DiagnosisCreate
     @Override
     public void sendTestSchedulingDiagnosisCreatedEvent(Diagnosis diagnosis) {
         streamBridge.send(
-                "testSchedulingDiagnosisCreatedSupplier-out-0",
+                "testSchedulingDiagnosisCreatedEventSupplier-out-0",
                 MessageBuilder.withPayload(diagnosis).build()
         );
         log.info("Test Diagnosis event sent: {}", diagnosis.getId());
@@ -27,7 +27,7 @@ public class DiagnosisCreatedEventSupplierAdapterImpl implements DiagnosisCreate
     @Override
     public void sendAppointmentSchedulingDiagnosisCreatedEvent(Diagnosis diagnosis) {
         streamBridge.send(
-                "appointmentSchedulingDiagnosisCreatedSupplier-out-0",
+                "appointmentSchedulingDiagnosisCreatedEventSupplier-out-0",
                 MessageBuilder.withPayload(diagnosis).build()
         );
         log.info("Appointment Diagnosis event sent: {}", diagnosis.getId());
