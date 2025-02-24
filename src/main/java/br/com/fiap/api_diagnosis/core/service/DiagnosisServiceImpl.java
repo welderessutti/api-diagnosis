@@ -2,6 +2,7 @@ package br.com.fiap.api_diagnosis.core.service;
 
 import br.com.fiap.api_diagnosis.core.domain.Diagnosis;
 import br.com.fiap.api_diagnosis.core.domain.TestStatus;
+import br.com.fiap.api_diagnosis.core.exception.DiagnosisNotFoundException;
 import br.com.fiap.api_diagnosis.core.port.in.DiagnosisPortIn;
 import br.com.fiap.api_diagnosis.core.port.out.DiagnosisCreatedEventSupplierPortOut;
 import br.com.fiap.api_diagnosis.core.port.out.DiagnosisPortOut;
@@ -19,6 +20,7 @@ public class DiagnosisServiceImpl implements DiagnosisPortIn {
 
     private final DiagnosisPortOut diagnosisPortOut;
     private final DiagnosisCreatedEventSupplierPortOut diagnosisCreatedEventSupplierPortOut;
+    private static final String NOT_FOUND_WITH_ID = "Diagnosis not found with id: ";
 
     public DiagnosisServiceImpl(
             DiagnosisPortOut diagnosisPortOut,
@@ -46,7 +48,7 @@ public class DiagnosisServiceImpl implements DiagnosisPortIn {
     public Diagnosis getDiagnosisById(Long diagnosisId) {
         Optional<Diagnosis> optionalDiagnosis = diagnosisPortOut.getDiagnosisById(diagnosisId);
         if (optionalDiagnosis.isEmpty()) {
-            throw new RuntimeException("Diagnosis not found");
+            throw new DiagnosisNotFoundException(NOT_FOUND_WITH_ID + diagnosisId);
         }
         return optionalDiagnosis.get();
     }
@@ -55,7 +57,7 @@ public class DiagnosisServiceImpl implements DiagnosisPortIn {
     public Diagnosis updateDiagnosis(Long diagnosisId, Diagnosis updatedDiagnosis) {
         Optional<Diagnosis> optionalDiagnosis = diagnosisPortOut.getDiagnosisById(diagnosisId);
         if (optionalDiagnosis.isEmpty()) {
-            throw new RuntimeException("Diagnosis not found");
+            throw new DiagnosisNotFoundException(NOT_FOUND_WITH_ID + diagnosisId);
         }
         Diagnosis outdatedDiagnosis = optionalDiagnosis.get();
         DiagnosisUpdater.updateOutdatedDiagnosis(outdatedDiagnosis, updatedDiagnosis);
@@ -65,7 +67,7 @@ public class DiagnosisServiceImpl implements DiagnosisPortIn {
     @Override
     public void deleteDiagnosisById(Long diagnosisId) {
         if (!diagnosisPortOut.existsDiagnosisById(diagnosisId)) {
-            throw new RuntimeException("Diagnosis not found");
+            throw new DiagnosisNotFoundException(NOT_FOUND_WITH_ID + diagnosisId);
         }
         diagnosisPortOut.deleteDiagnosisById(diagnosisId);
     }

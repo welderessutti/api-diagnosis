@@ -5,6 +5,7 @@ import br.com.fiap.api_diagnosis.core.port.in.DiagnosisPortIn;
 import br.com.fiap.api_diagnosis.framework.dto.request.DiagnosisRequestDto;
 import br.com.fiap.api_diagnosis.framework.dto.response.DiagnosisResponseDto;
 import br.com.fiap.api_diagnosis.framework.mapper.DiagnosisDtoDomainMapper;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -27,7 +28,7 @@ public class DiagnosisController {
     }
 
     @PostMapping
-    public ResponseEntity<DiagnosisResponseDto> createDiagnosis(@RequestBody DiagnosisRequestDto request) {
+    public ResponseEntity<DiagnosisResponseDto> createDiagnosis(@RequestBody @Valid DiagnosisRequestDto request) {
         Diagnosis diagnosis = DiagnosisDtoDomainMapper.toDiagnosis(request);
         DiagnosisResponseDto diagnosisResponseDto = DiagnosisDtoDomainMapper
                 .toDiagnosisResponseDto(diagnosisPortIn.createDiagnosis(diagnosis));
@@ -57,7 +58,7 @@ public class DiagnosisController {
 
     @PutMapping("/{diagnosisId}")
     public ResponseEntity<DiagnosisResponseDto> updateDiagnosis(
-            @PathVariable Long diagnosisId, @RequestBody DiagnosisRequestDto request) {
+            @PathVariable Long diagnosisId, @RequestBody @Valid DiagnosisRequestDto request) {
         Diagnosis diagnosis = DiagnosisDtoDomainMapper.toDiagnosis(request);
         DiagnosisResponseDto diagnosisResponseDto = DiagnosisDtoDomainMapper.toDiagnosisResponseDto(
                 diagnosisPortIn.updateDiagnosis(diagnosisId, diagnosis));
