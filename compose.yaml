@@ -1,5 +1,5 @@
 services:
-  postgres:
+  db-postgres-api-diagnosis:
     image: postgres:latest
     container_name: db-postgres-api-diagnosis
     ports:
@@ -13,38 +13,28 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - hackathon-fiap
 
-  rabbitmq:
-    image: rabbitmq:management
-    container_name: broker-rabbitmq-2
-    restart: always
-    ports:
-      - "5673:5672"
-      - "15673:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: rabbitmq
-      RABBITMQ_DEFAULT_PASS: rabbitmq
-    healthcheck:
-      test: [ "CMD", "rabbitmqctl", "status" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  app:
+  app-api-diagnosis:
     build: .
     image: welderessutti/api-diagnosis:latest
     container_name: app-api-diagnosis
     ports:
       - "8082:8080"
     depends_on:
-      postgres:
-        condition: service_healthy
-      rabbitmq:
+      db-postgres-api-diagnosis:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: "jdbc:postgresql://postgres:5432/diagnosis"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db-postgres-api-diagnosis:5432/diagnosis"
       SPRING_DATASOURCE_USERNAME: "postgres"
       SPRING_DATASOURCE_PASSWORD: "postgres"
       SPRING_RABBITMQ_USERNAME: "rabbitmq"
       SPRING_RABBITMQ_PASSWORD: "rabbitmq"
-      SPRING_RABBITMQ_HOST: "rabbitmq"
+      SPRING_RABBITMQ_HOST: "broker-rabbitmq"
+    networks:
+      - hackathon-fiap
+
+networks:
+  hackathon-fiap:
+    external: true
