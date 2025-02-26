@@ -68,6 +68,16 @@ public class Diagnosis {
         this.diagnosisDate = diagnosisDate;
     }
 
+    public void resultAnalysis(Double result) {
+        if (result < 5.7) {
+            this.setGlycatedHemoglobinTestStatus(TestStatus.NORMAL);
+        } else if (result >= 6.5) {
+            this.setGlycatedHemoglobinTestStatus(TestStatus.CRITICAL);
+        } else {
+            this.setGlycatedHemoglobinTestStatus(TestStatus.ALTERED);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

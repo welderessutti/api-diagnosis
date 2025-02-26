@@ -13,8 +13,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    networks:
-      - hackathon-fiap
 
   app-api-diagnosis:
     build: .
@@ -32,9 +30,3 @@ services:
       SPRING_RABBITMQ_USERNAME: "rabbitmq"
       SPRING_RABBITMQ_PASSWORD: "rabbitmq"
       SPRING_RABBITMQ_HOST: "broker-rabbitmq"
-    networks:
-      - hackathon-fiap
-
-networks:
-  hackathon-fiap:
-    external: true
