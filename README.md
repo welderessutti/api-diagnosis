@@ -5,7 +5,7 @@
 - **Grupo 11:**
     - **[Pedro Ono](https://github.com/pedr0no) - RM 354950**
     - **[Elton Xavier Souza](https://github.com/eltonxs) - RM 354254**
-    - **[Welder Ressutti](https://github.com/welderessutti) - RM 99070**
+    - **[Welder Ressutti](https://github.com/welderessutti) - RM 354557**
 
 # Glicare - Sistema de Gerenciamento de Resultado de Exame e Agendamento
 
