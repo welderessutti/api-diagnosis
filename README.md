@@ -7,25 +7,25 @@
     - **[Elton Xavier Souza](https://github.com/eltonxs) - RM 354254**
     - **[Welder Ressutti](https://github.com/welderessutti) - RM 354557**
 
-# Glicare - Sistema de Gerenciamento de Resultado de Exame e Agendamento
+# Glicare - Sistema de Gerenciamento de Resultado de Exame, Diagnóstico e Agendamento
 
 ## Microsserviço de Gerenciamento de Diagnóstico
 
-**Microsserviço desenvolvido por:** Welder Ressutti
+**Desenvolvido por: [Welder Ressutti](https://github.com/welderessutti)**
 
-Sua responsabilidade no sistema **Glicare** é gerenciar diagnósticos, executando operações **CRUD** e processando
-eventos do broker enviados pelo microsserviço de resultados de exames.
+O microsserviço de gerenciamento de diagnósticos no **Glicare** é responsável por executar operações **CRUD** e
+processar eventos recebidos do **broker**, originados pelo microsserviço de **resultados de exames**.
 
 A análise diagnóstica utiliza **IA** para determinar se o paciente precisa de um novo **exame** para controle ou de uma
-**consulta médica** para avaliação, registra o diagnóstico no banco de dados e envia eventos ao broker para o
-microsserviço de agendamento processar.
+**consulta médica** para avaliação. O diagnóstico é registrado no banco de dados e eventos são enviados ao **broker**
+para que o microsserviço de agendamento processe a próxima etapa.
 
-A persistência dos dados é feita em um banco **PostgreSQL**, com gerenciamento de migração de schemas via **Flyway**.
+Os dados são armazenados em um banco **PostgreSQL**, com gerenciamento de migração de schemas via **Flyway**.
 
-Exceções personalizadas são tratadas globalmente por **Rest Controller Advice** e **Exception Handler**, garantindo
-respostas padronizadas com **timestamp**, **status code**, **error**, **message** e **path**.
+Além disso, **exceções personalizadas** são tratadas globalmente por **Rest Controller Advice** e **Exception Handler**,
+garantindo respostas padronizadas com **timestamp**, **status code**, **error**, **message** e **path**.
 
-_***Importante**: A funcionalidade de **IA** ainda **não foi implementada** neste MVP, mas faz parte do escopo do
+_**Importante**: A funcionalidade de **IA** ainda **não foi implementada** neste MVP, mas faz parte do escopo do
 sistema._
 
 ### Fluxo de Dados Mensageria
