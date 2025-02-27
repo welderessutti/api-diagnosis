@@ -2,10 +2,11 @@
 
 # Pós Tech - Arquitetura e Desenvolvimento Java - Fiap - 2024/25
 
-- **Grupo 11:**
-    - **[Pedro Ono](https://github.com/pedr0no) - RM 354950**
-    - **[Elton Xavier Souza](https://github.com/eltonxs) - RM 354254**
-    - **[Welder Ressutti](https://github.com/welderessutti) - RM 354557**
+**Grupo 11:**
+
+- **[Pedro Ono](https://github.com/pedr0no) - RM 354950**
+- **[Elton Xavier Souza](https://github.com/eltonxs) - RM 354254**
+- **[Welder Ressutti](https://github.com/welderessutti) - RM 354557**
 
 # Glicare - Sistema de Gerenciamento de Resultado de Exame, Diagnóstico e Agendamento
 
@@ -132,9 +133,10 @@ do [Docker Hub](https://hub.docker.com/repository/docker/welderessutti/api-diagn
 encontre a imagem, ele realizará a **build** da aplicação **(.jar)**, criará a imagem e executará os containers
 automaticamente.
 
-Antes do container da aplicação subir, ele aguardará o container do banco de dados **PostgreSQL** estar pronto
-utilizando um **healthcheck**, quando pronto, o container da aplicação inicia, e realizará a migração do banco de dados
-e suas tabelas automaticamente utilizando o **Flyway**, e estará disponível para acesso em:
+Antes do container da aplicação subir, ele aguardará os containers do banco de dados **PostgreSQL** e do broker
+**RabbitMQ** estarem prontos utilizando um **healthcheck**, quando pronto, o container da aplicação inicia, realiza
+a migração do banco de dados e suas tabelas automaticamente utilizando o **Flyway**, estará disponível para receber os
+eventos do broker e poderá ser acessado em:
 
 ```
 http://localhost:8080/api/diagnosis
