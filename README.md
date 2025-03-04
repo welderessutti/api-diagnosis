@@ -14,7 +14,8 @@
 
 **Desenvolvido por: [Welder Ressutti](https://github.com/welderessutti)**
 
-O microsserviço de gerenciamento de diagnósticos no **Glicare** é responsável por executar operações **CRUD** e
+O microsserviço de gerenciamento de diagnósticos no
+**[Glicare](https://github.com/welderessutti/hackathon-fiap-glicare)** é responsável por executar operações **CRUD** e
 processar eventos recebidos do **broker**, originados pelo microsserviço de **resultados de exames**.
 
 A análise diagnóstica utiliza **IA** para determinar se o paciente precisa de um novo **exame** para controle ou de uma
