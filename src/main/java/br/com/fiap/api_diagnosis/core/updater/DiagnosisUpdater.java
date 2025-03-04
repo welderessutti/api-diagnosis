@@ -19,8 +19,5 @@ public class DiagnosisUpdater {
         if (nonNull(updated.getGlycatedHemoglobinTestStatus())) {
             outdated.setGlycatedHemoglobinTestStatus(updated.getGlycatedHemoglobinTestStatus());
         }
-        if (nonNull(updated.getDiagnosisDate())) {
-            outdated.setDiagnosisDate(updated.getDiagnosisDate());
-        }
     }
 }

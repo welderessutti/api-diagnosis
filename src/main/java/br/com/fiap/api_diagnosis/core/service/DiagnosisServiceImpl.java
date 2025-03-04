@@ -61,6 +61,7 @@ public class DiagnosisServiceImpl implements DiagnosisPortIn {
         }
         Diagnosis outdatedDiagnosis = optionalDiagnosis.get();
         DiagnosisUpdater.updateOutdatedDiagnosis(outdatedDiagnosis, updatedDiagnosis);
+        outdatedDiagnosis.setDiagnosisDate(LocalDateTime.now(ZoneId.of("America/Sao_Paulo")));
         return diagnosisPortOut.updateDiagnosis(outdatedDiagnosis);
     }
 
